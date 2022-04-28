@@ -16,6 +16,15 @@ docker-compose run --build -d
 docker-compose run -it --rm ubuntu bash
 ```
 
+### pgadmin
+You can access the pgadmin [here](http://localhost:8080). (http://localhost:8080)
+
+### Checker
+You can check your SQL queries by add them to the [check/] folder. Then run the check.py file in the ubuntu container:
+```bash
+python3 check.py -s *.sql
+```
+
 ### Configuration
-Configuration is optional.
+Configuration is optional
 If credentials change is desired, you can do so in the [cfg/env](cfg/env) file.
