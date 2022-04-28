@@ -4,7 +4,7 @@ SHELL := /bin/bash
 .DEFAULT: all
 
 compose:
-	docker-compose run --build -d
+	docker-compose up --build -d
 
 clean:
 	docker rmi $(docker images -f "dangling=true" -q)
