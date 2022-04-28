@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - ./CreateSchema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    env_file:
+      - ./cfg/env
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file:
+      - ./cfg/env
+    depends_on:
+      - db
+    volumes:
+      - ./pgadmin/servers.json:/pgadmin4/servers.json
+    ports:
+      - 8080:80
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ubuntu
+    depends_on:
+      - db
+    image: "ubuntu"
+    hostname: ubuntu
+    volumes:
+      - ./check/:/usr/src/app/check/
+      - ./code/:/usr/src/app/code/
