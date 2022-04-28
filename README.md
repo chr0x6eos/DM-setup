@@ -12,7 +12,7 @@ In order to have this running following steps are required:
 
 ### Running by hand:
 ```bash
-docker-compose run --build -d
+docker-compose up --build -d
 docker-compose run -it --rm ubuntu bash
 ```
 
